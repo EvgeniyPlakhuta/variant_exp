@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логические схемы — Физика 10 класс</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🔌</span>
+                <span class="logo-text">Логические схемы</span>
+            </div>
+            <nav class="nav">
+                <a href="#features">Зачем это</a>
+                <a href="#trainer">Тренажёр</a>
+                <a href="#tasks">Задания</a>
+                <a href="#worksheet">Рабочий лист</a>
+                <a href="#dashboard">Дашборд</a>
+                <a href="#theory">Теория</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="hero-badge">Физика • 10 класс • Логика</span>
+            <h1>Собери электрическую схему — прочти её логически</h1>
+            <p class="hero-subtitle">
+                Выключатели в цепи — это логические переменные. Соединяй их последовательно
+                и параллельно, а тренажёр расскажет, какое булево выражение описывает твою схему.
+            </p>
+            <div class="hero-actions">
+                <a href="#trainer" class="btn btn-primary">Начать сборку</a>
+                <a href="#theory" class="btn btn-ghost">Сначала теория</a>
+            </div>
+            <div class="hero-illustration">
+                <div class="hl-scheme">
+                    <div class="hl-node plus">+</div>
+                    <div class="hl-wire"></div>
+                    <div class="hl-switch" data-v="S1">A</div>
+                    <div class="hl-wire"></div>
+                    <div class="hl-switch" data-v="S2">B</div>
+                    <div class="hl-wire"></div>
+                    <div class="hl-bulb">💡</div>
+                    <div class="hl-wire"></div>
+                    <div class="hl-node minus">−</div>
+                </div>
+                <div class="hl-formula">Ток = A ∧ B</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Почему это работает</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔑</div>
+                    <h3>Выключатель = переменная</h3>
+                    <p>Замкнут (1) или разомкнут (0) — как значение логической переменной</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Последовательно = И</h3>
+                    <p>Ток течёт только если замкнуты ВСЕ выключатели на пути — конъюнкция</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Параллельно = ИЛИ</h3>
+                    <p>Ток течёт, если замкнут хотя бы один из параллельных выключателей — дизъюнкция</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Лампочка = результат</h3>
+                    <p>Горит или нет — итоговое значение логического выражения</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trainer" class="trainer-section">
+        <div class="container">
+            <h2>Тренажёр электрических схем</h2>
+            <p class="section-sub">Собери цепь и узнай её логическое выражение</p>
+
+            <div class="trainer-wrapper">
+                <div class="components-panel">
+                    <h3>Компоненты</h3>
+                    <div class="component-list">
+                        <div class="component" draggable="true" data-type="battery">
+                            <div class="component-preview battery-preview">
+                                <div class="battery">
+                                    <div class="battery-terminal positive">+</div>
+                                    <div class="battery-body"></div>
+                                    <div class="battery-terminal negative">−</div>
+                                </div>
+                            </div>
+                            <span>Батарея (9В)</span>
+                        </div>
+                        <div class="component" draggable="true" data-type="bulb">
+                            <div class="component-preview bulb-preview">
+                                <div class="bulb">
+                                    <div class="bulb-glass"></div>
+                                    <div class="bulb-base"></div>
+                                </div>
+                            </div>
+                            <span>Лампочка</span>
+                        </div>
+                        <div class="component" draggable="true" data-type="switch">
+                            <div class="component-preview switch-preview">
+                                <div class="switch-component">
+                                    <div class="switch-lever"></div>
+                                    <div class="switch-contacts">
+                                        <div class="contact"></div>
+                                        <div class="contact"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span>Выключатель</span>
+                        </div>
+                        <div class="component" draggable="true" data-type="resistor">
+                            <div class="component-preview resistor-preview">
+                                <div class="resistor">
+                                    <div class="resistor-lead"></div>
+                                    <div class="resistor-body"></div>
+                                    <div class="resistor-lead"></div>
+                                </div>
+                            </div>
+                            <span>Резистор</span>
+                        </div>
+                        <div class="component" draggable="true" data-type="junction">
+                            <div class="component-preview junction-preview">
+                                <div class="junction">
+                                    <div class="junction-dot"></div>
+                                </div>
+                            </div>
+                            <span>Узел</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workspace">
+                    <div class="workspace-header">
+                        <div class="task-info">
+                            <span class="task-badge" id="taskBadge">Задание 1</span>
+                            <span class="task-text" id="taskText">Соберите схему...</span>
+                        </div>
+                        <div class="workspace-actions">
+                            <button id="wireModeBtn" class="btn btn-secondary">🖊 Провода</button>
+                            <button id="clearBtn" class="btn btn-secondary">Очистить</button>
+                            <button id="checkBtn" class="btn btn-primary">Проверить</button>
+                        </div>
+                    </div>
+                    <div id="wireStatus" class="wire-status">💡 Перетащите компоненты на поле, соедините их проводами и нажмите «Проверить».</div>
+                    <div class="grid-area" id="gridArea">
+                        <div class="grid"></div>
+                        <div id="dropHint">
+                            <div>
+                                <div class="hint-icon">🧩</div>
+                                <p>Перетащите сюда компоненты, чтобы начать сборку схемы</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-properties" id="propertiesPanel">
+                        <h4>Свойства компонента</h4>
+                        <div class="properties-content">
+                            <p class="hint">Кликните по компоненту на схеме для просмотра свойств</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-panel">
+                    <h3>Логический вывод</h3>
+                    <div class="analysis-content" id="analysisContent">
+                        <div class="analysis-placeholder">
+                            <div class="analysis-icon">🔍</div>
+                            <p>Соберите схему — здесь появится её логическое выражение</p>
+                        </div>
+                    </div>
+                    <div class="truth-table" id="truthTable"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tasks" class="tasks-section">
+        <div class="container">
+            <h2>Задания для самопроверки</h2>
+            <p class="section-sub">Выберите сложность и решите задачу</p>
+            <div class="level-tabs">
+                <button class="level-tab active" data-level="1">Уровень 1</button>
+                <button class="level-tab" data-level="2">Уровень 2</button>
+                <button class="level-tab" data-level="3">Уровень 3</button>
+            </div>
+            <div class="task-card" id="taskCard">
+                <div class="task-statement" id="taskStatement"></div>
+                <div class="task-answer" id="taskAnswer"></div>
+                <div class="task-feedback" id="taskFeedback"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="worksheet" class="worksheet-section">
+        <div class="container">
+            <h2>Электронный рабочий лист ученика</h2>
+            <p class="section-sub">Заполняется автоматически по мере работы в тренажёре — данные сохраняются в браузере</p>
+
+            <div class="ws-identity-card">
+                <div class="ws-field">
+                    <label>Фамилия, имя</label>
+                    <input type="text" id="wsName" data-ws="name" placeholder="Иванов Иван">
+                </div>
+                <div class="ws-field">
+                    <label>Класс</label>
+                    <input type="text" id="wsClass" data-ws="class" placeholder="10 «А»">
+                </div>
+                <div class="ws-field">
+                    <label>Дата</label>
+                    <input type="date" id="wsDate" data-ws="date">
+                </div>
+                <div class="ws-field">
+                    <label>Команда №</label>
+                    <input type="text" id="wsTeam" data-ws="team" placeholder="1">
+                </div>
+                <div class="ws-field">
+                    <label>Роль в команде</label>
+                    <select id="wsRole" data-ws="role">
+                        <option value="">— выберите роль —</option>
+                        <option>Сборщик схемы</option>
+                        <option>Испытатель (проверка)</option>
+                        <option>Теоретик (формулы)</option>
+                        <option>Докладчик</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="ws-stage">
+                <div class="ws-stage-head"><span class="ws-num">1</span><h3>Мотивация: цель и гипотеза</h3></div>
+                <p class="ws-question">Ключевой вопрос занятия: «Что умеет компьютер, чего не сможет ученик сделать руками за то же время?»</p>
+                <label class="ws-textarea">1. Сформулируй своими словами цель занятия
+                    <textarea data-ws="goal" rows="2" placeholder="Я хочу понять…"></textarea>
+                </label>
+                <label class="ws-textarea">2. Гипотеза: компьютер помогает, потому что он…
+                    <textarea data-ws="hypothesis" rows="2" placeholder="быстро считает и строит схему…"></textarea>
+                </label>
+            </div>
+
+            <div class="ws-stage">
+                <div class="ws-stage-head"><span class="ws-num">2</span><h3>Актуализация знаний</h3></div>
+                <p class="ws-question">4. Заполни соответствие между логикой и схемой:</p>
+                <div class="ws-match-grid">
+                    <div class="ws-field ws-inline"><span>Выключатель <b>замкнут</b> =</span>
+                        <select data-ws-m="closed"><option value="">—</option><option value="1">1</option><option value="0">0</option></select>
+                    </div>
+                    <div class="ws-field ws-inline"><span>Выключатель <b>разомкнут</b> =</span>
+                        <select data-ws-m="open"><option value="">—</option><option value="0">0</option><option value="1">1</option></select>
+                    </div>
+                    <div class="ws-field ws-inline"><span>Лампа <b>горит</b> =</span>
+                        <select data-ws-m="lamp"><option value="">—</option><option value="1">1</option><option value="0">0</option></select>
+                    </div>
+                    <div class="ws-field ws-inline"><span><b>Последовательно</b> = операция</span>
+                        <select data-ws-m="seq"><option value="">—</option><option>И (AND)</option><option>ИЛИ (OR)</option></select>
+                    </div>
+                    <div class="ws-field ws-inline"><span><b>Параллельно</b> = операция</span>
+                        <select data-ws-m="par"><option value="">—</option><option>ИЛИ (OR)</option><option>И (AND)</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ws-stage" data-ws-stage="demo">
+                <div class="ws-stage-head"><span class="ws-num">3</span><h3>Знакомство с тренажёром · демо-цепь</h3></div>
+                <p class="ws-question">5. Демо-цепь «выключатель + лампа». Замкни выключатель двойным кликом.</p>
+                <div class="ws-auto-row">
+                    <label class="ws-formula">Формула цепи: <b id="wsDemoFormula">—</b></label>
+                    <button class="btn btn-secondary ws-fill" data-fill="demo">Записать из тренажёра</button>
+                </div>
+                <div class="ws-tt" id="wsDemoTT"></div>
+            </div>
+
+            <div class="ws-stage" data-ws-stage="seq">
+                <div class="ws-stage-head"><span class="ws-num">4</span><h3>Практикум: последовательное соединение (И)</h3></div>
+                <p class="ws-question">6. Собери цепь из A и B ПОСЛЕДОВАТЕЛЬНО. Испытай все комбинации.</p>
+                <div class="ws-auto-row">
+                    <label class="ws-formula">Формула: <b id="wsSeqFormula">—</b></label>
+                    <button class="btn btn-secondary ws-fill" data-fill="seq">Записать из тренажёра</button>
+                </div>
+                <div class="ws-tt" id="wsSeqTT"></div>
+                <label class="ws-textarea">7. Вывод: лампа горит, когда…
+                    <textarea data-ws="seq-conclusion" rows="2"></textarea>
+                </label>
+            </div>
+
+            <div class="ws-stage" data-ws-stage="par">
+                <div class="ws-stage-head"><span class="ws-num">5</span><h3>Практикум: параллельное соединение (ИЛИ)</h3></div>
+                <p class="ws-question">8. Перестрой цепь на ПАРАЛЛЕЛЬНОЕ соединение A и B.</p>
+                <div class="ws-auto-row">
+                    <label class="ws-formula">Формула: <b id="wsParFormula">—</b></label>
+                    <button class="btn btn-secondary ws-fill" data-fill="par">Записать из тренажёра</button>
+                </div>
+                <div class="ws-tt" id="wsParTT"></div>
+                <label class="ws-textarea">9. Вывод и отличие от последовательного:
+                    <textarea data-ws="par-conclusion" rows="2"></textarea>
+                </label>
+            </div>
+
+            <div class="ws-stage" data-ws-stage="mix">
+                <div class="ws-stage-head"><span class="ws-num">6</span><h3>Смешанные схемы и задания (уровень 2–3)</h3></div>
+                <label class="ws-textarea">Задание А. Построй схему по формуле Y = (A AND B) OR C.
+                    <textarea data-ws="mix-plan" rows="2" placeholder="Как собирал: A и B — последовательно, затем параллельно с C…"></textarea>
+                </label>
+                <div class="ws-auto-row">
+                    <label class="ws-formula">Формула собранной схемы: <b id="wsMixFormula">—</b></label>
+                    <button class="btn btn-secondary ws-fill" data-fill="mix">Записать из тренажёра</button>
+                </div>
+                <div class="ws-tt" id="wsMixTT"></div>
+                <label class="ws-textarea">11. Ответ: когда схема = 1, а когда = 0?
+                    <textarea data-ws="mix-answer" rows="2" placeholder="Y = 0 только когда C=0 и (A AND B)=0…"></textarea>
+                </label>
+            </div>
+
+            <div class="ws-stage">
+                <div class="ws-stage-head"><span class="ws-num">7</span><h3>Защита результата</h3></div>
+                <p class="ws-question">Оценка «комиссии» (из других команд), максимум 10 баллов:</p>
+                <div class="ws-score-grid">
+                    <div class="ws-field"><label>Верно собрана схема</label><input type="number" data-ws="score-schema" min="0" max="3" value="0"><span>/ 3</span></div>
+                    <div class="ws-field"><label>Корректно выведена формула</label><input type="number" data-ws="score-formula" min="0" max="3" value="0"><span>/ 3</span></div>
+                    <div class="ws-field"><label>Таблица истинности совпадает</label><input type="number" data-ws="score-table" min="0" max="3" value="0"><span>/ 3</span></div>
+                    <div class="ws-field"><label>Объяснение своими словами</label><input type="number" data-ws="score-explain" min="0" max="1" value="0"><span>/ 1</span></div>
+                </div>
+                <div class="ws-total" id="wsTotal">ИТОГО: 0 / 10</div>
+            </div>
+
+            <div class="ws-stage">
+                <div class="ws-stage-head"><span class="ws-num">8</span><h3>Рефлексия</h3></div>
+                <label class="ws-textarea">17. Что умеет компьютер, чего не сделает ученик руками за то же время?
+                    <textarea data-ws="reflect1" rows="2"></textarea>
+                </label>
+                <label class="ws-textarea">18. Сегодня я научился(лась):
+                    <textarea data-ws="reflect2" rows="2"></textarea>
+                </label>
+                <label class="ws-textarea">19. Что было труднее всего?
+                    <textarea data-ws="reflect3" rows="2"></textarea>
+                </label>
+                <div class="ws-self-grid">
+                    <div class="ws-field ws-inline"><span>Я могу объяснить И и ИЛИ через схему:</span>
+                        <select data-ws="self-and"><option value="">—</option><option>да</option><option>частично</option><option>нет</option></select></div>
+                    <div class="ws-field ws-inline"><span>Я могу собрать схему по формуле:</span>
+                        <select data-ws="self-circuit"><option value="">—</option><option>да</option><option>частично</option><option>нет</option></select></div>
+                </div>
+            </div>
+
+            <div class="ws-actions">
+                <button class="btn btn-primary" id="wsExportBtn">💾 Экспорт рабочего листа (JSON)</button>
+                <button class="btn btn-secondary" id="wsResetBtn">Очистить лист</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2>Дашборд прохождения тренажёра</h2>
+            <p class="section-sub">Анализ работы ученика: задания, попытки, точность, время</p>
+
+            <div class="dash-kpis" id="dashKpis"></div>
+
+            <div class="dash-grid">
+                <div class="dash-card" id="dashLevelsCard">
+                    <h3>Прогресс по уровням</h3>
+                    <div id="dashLevels"></div>
+                </div>
+                <div class="dash-card" id="dashTasksCard">
+                    <h3>Попытки по заданиям</h3>
+                    <div id="dashTasks"></div>
+                </div>
+                <div class="dash-card dash-card-wide" id="dashEventsCard">
+                    <h3>Лента событий</h3>
+                    <div id="dashEvents"></div>
+                </div>
+            </div>
+
+            <div class="dash-actions">
+                <button class="btn btn-primary" id="dashExportBtn">💾 Экспорт отчёта (JSON)</button>
+                <button class="btn btn-secondary" id="dashResetBtn">Сбросить статистику</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="theory" class="theory-section">
+        <div class="container">
+            <h2>Краткая теория</h2>
+            <div class="theory-grid">
+                <div class="theory-card">
+                    <h3>Последовательное соединение</h3>
+                    <div class="mini-scheme"><span class="mini-switch">A</span><span class="mini-link">—</span><span class="mini-switch">B</span></div>
+                    <p>Если выключатели A и B стоят один за другим, ток идёт только когда замкнуты оба.</p>
+                    <div class="formula-box">Y = A ∧ B</div>
+                    <p class="physics-note">Лампа горит, только если оба выключателя замкнуты.</p>
+                </div>
+                <div class="theory-card">
+                    <h3>Параллельное соединение</h3>
+                    <div class="mini-scheme"><span class="mini-switch">A</span><span class="mini-optional">∥</span><span class="mini-switch">B</span></div>
+                    <p>Если выключатели соединены параллельно, ток идёт, когда замкнут хотя бы один.</p>
+                    <div class="formula-box">Y = A ∨ B</div>
+                    <p class="physics-note">Лампа горит, если хотя бы один выключатель замкнут.</p>
+                </div>
+                <div class="theory-card">
+                    <h3>Отрицание</h3>
+                    <div class="mini-scheme"><span class="mini-switch invert">Ā</span></div>
+                    <p>Нормально замкнутый выключатель (контакт размыкает цепь при нажатии) работает как НЕ.</p>
+                    <div class="formula-box">Y = ¬A</div>
+                    <p class="physics-note">Лампа горит, пока выключатель не нажат.</p>
+                </div>
+                <div class="theory-card">
+                    <h3>От схемы к формуле</h3>
+                    <ul class="theory-list">
+                        <li>Одна ветка последовательно → А∧В</li>
+                        <li>Несколько параллельных веток → А∨В</li>
+                        <li>Сложная схема → комбинация (A∧B)∨C</li>
+                    </ul>
+                    <div class="formula-box">Y = (A ∧ B) ∨ C</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Логические схемы · Тренажёр для 10 класса · Учебный проект</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
